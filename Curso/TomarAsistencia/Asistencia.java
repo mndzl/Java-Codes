@@ -1,37 +1,47 @@
 package TomaAsistencia;
-import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class Asistencia {
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		Persona[] personas = new Persona[5];
-
-		personas[0] = new Persona("Daniel",21);
-		personas[1] = new Persona("Dana",22);
-		personas[2] = new Persona("Javier",17);
-		personas[3] = new Persona("Rosalia",18);
-		personas[4] = new Persona("Pedro",20);
-		String curso = "111programadores";
-		String materia = "POO";
-		String horario = "Noche";
+		try {
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/Asistencia","root","");
+			Statement objetoStatement = conexion.createStatement();
+			ResultSet query = objetoStatement.executeQuery("SELECT * FROM Sheet1");
+			
+			String nombre;
+			int DNI;
+			String curso;
+			String cursoo = "111milProgramadores";
+			String materia = "POO";
+			String horario = "Noche";
+			Presente presentesHoy = new Presente(cursoo,materia,horario);
+			ArrayList<Persona>personas = new ArrayList<Persona>();
+			
+			while(query.next()) {
+				nombre = query.getString("Nombre");
+				DNI = query.getInt("DNI");
+				curso = query.getString("Curso");
+				Persona a = new Persona(nombre,DNI,curso);
+				personas.add(a);
+				
+				int presencia = JOptionPane.showConfirmDialog(null, ("Presente "+a.getNombre()+"?"),"Presente",JOptionPane.YES_NO_OPTION);
+				if(presencia == JOptionPane.YES_OPTION) {
+					presentesHoy.addPresente(a);
+				}else {
+					a.añadirFalta();
+				}
+			}
 		
-		System.out.println("Toma de asistencia\n");
-		char pres;
-		
-		ArrayList<Persona>presentes = new ArrayList<Persona>();
-		
-		for(int i=0; i<5; i++) {
-			System.out.print(personas[i].getNombre()+": ");
-			pres = scanner.next().charAt(0);
-			if(pres == 'p')presentes.add(personas[i]);
+			JOptionPane.showMessageDialog(null, "Se le mostrará la lista de presentes");
+			JOptionPane.showMessageDialog(null, presentesHoy.mostrarPresentes());
+			
+		}catch(Exception e) {
+			System.out.println("Operación no realizada.\n");
+			e.printStackTrace();
 		}
-		Presente listaHoy = new Presente(presentes,curso,materia,horario);
-		
-		System.out.println("\nAlumnos presentes: ");
-
-		listaHoy.mostrarPresentes();
 	}
-
 }
