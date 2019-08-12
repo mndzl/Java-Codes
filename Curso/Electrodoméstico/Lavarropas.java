@@ -5,6 +5,7 @@ public class Lavarropas extends Electrodoméstico {
 	private static final int carga_def = 5;
 	
 	public Lavarropas() {
+		super();
 		this.carga = carga_def;
 	}
 	public Lavarropas(float precio, float peso) {
