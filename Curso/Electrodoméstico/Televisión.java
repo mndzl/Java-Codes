@@ -8,6 +8,7 @@ public class Televisión extends Electrodoméstico {
 	private static final int pulgadas_def= 20;
 	
 	public Televisión() {
+		super();
 		this.pulgadas = pulgadas_def;
 		this.sintonizadorTDT = sintonizadorTDT_def;
 	}
