@@ -19,6 +19,7 @@ public class PruebasSwing {
             }
         });
         
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(tf);
         frame.add(boton);
         frame.setSize(400,300);
