@@ -116,7 +116,7 @@ public class MyDate {
 		}
 
 		else {
-			a.setDay(daysInMonths[a.getMonth()-1]);
+			a.setDay(daysInMonths[this.previusMonth().getMonth()-1]);
 			a = this.previusMonth();
 		}
 		
