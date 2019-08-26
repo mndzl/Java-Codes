@@ -40,7 +40,11 @@ public class MyDate {
 			System.out.println("El mes " + month + " no tiene " + day + " dias.");
 			return false;
 		}
-		
+		if(year<999 || year>9999){
+                    System.out.println("El año no es válido.");
+                    return false;
+                }
+                
 		this.year = year;
 		this.month = month;
 		this.day = day;
@@ -84,7 +88,6 @@ public class MyDate {
 	public MyDate nextDay() {
 		MyDate a = this;
 		if(this.day+1<=daysInMonths[this.month-1]) {
-			System.out.println((this.day+1) + "<=" + daysInMonths[this.month-1]);
 			a = new MyDate(this.year,this.month,this.day+1);
 		}else {
 			a.setDay(1);
