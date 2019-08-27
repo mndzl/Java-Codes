@@ -57,22 +57,32 @@ public class MyComplex {
 		
 	}
 	public MyComplex add(MyComplex right) {
-		
+		this.real += right.real;
+                this.imag += right.imag;
+                return this;
 	}
 	public MyComplex addNew(MyComplex right) {
-		
+		MyComplex m = new MyComplex(this.real + right.real,this.imag+this.real);
+                return m;
 	}
 	public MyComplex substract(MyComplex right) {
-		
+                this.real -= right.real;
+                this.imag -= right.imag;
+                return this;
 	}
 	public MyComplex substractNew(MyComplex right) {
-		
+		MyComplex m = new MyComplex(this.real - right.real,this.imag-this.real);
+                return m;
 	}
 	public MyComplex multiply(MyComplex right) {
-		
+		this.real *= right.real;
+                this.imag *= right.imag;
+                return this;
 	}
 	public MyComplex divide(MyComplex right) {
-		
+		this.real /= right.real;
+                this.imag /= right.imag;
+                return this;
 	}
 	public MyComplex conjugate(MyComplex right) {
 		
