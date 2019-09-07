@@ -7,17 +7,16 @@ import Vista.*;
 public class Main {
 	static ArrayList<Pelicula>peliculasEnCartelera;
 	static ConnectionProtocol database = new ConnectionProtocol("jdbc:mysql://localhost:3306/Cines","root","");
-	static PantallaPrincipal principal = new PantallaPrincipal();
+	/*static PantallaPrincipal principal = new PantallaPrincipal();
 	static AdminPrincipal adminPrincipal= new AdminPrincipal();
-	static ClientePrincipal clientePrincipal = new ClientePrincipal();
+	static ClientePrincipal clientePrincipal = new ClientePrincipal();*/
 	
 	
 	public static void main(String[] args) {
 		// Updating Movies
 			updateDatabase();
 		// etc
-			
-			
+		
 			
 	}
 	
@@ -34,9 +33,8 @@ public class Main {
 		ArrayList<String>clasificaciones = new ArrayList<>();
 		ArrayList<String>duraciones = new ArrayList<>(); 
 		
-		ResultSet tabla = database.getTable();
-		
 		try {
+			ResultSet tabla = database.getTable();	
 			while(tabla.next()) {
 
 				peliculas.add(tabla.getString("NOMBRE"));

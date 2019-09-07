@@ -13,9 +13,6 @@ public class ConnectionProtocol {
 		this.url = url;
 		this.username = username;
 		this.password = password;
-		if(startConnection()) {
-			System.out.println("Conexion con base de datos realizada correctamente.");
-		}else System.out.println("No se ha podido establecer una conexion con la base de datos");
 	}
 	
 	private boolean startConnection() {
@@ -30,13 +27,16 @@ public class ConnectionProtocol {
 	}
 	
 	public ResultSet getTable() {
-		try {
-			return stat.executeQuery("SELECT * FROM PELICULAS");
-		}catch(Exception e) {
-			System.out.println("Error al conectar con base de datos");
-			System.out.println(e);
-			return null;
-		}
+		if(startConnection()) {
+			try {
+				ResultSet res = stat.executeQuery("SELECT * FROM PELICULAS");
+				return res;
+			}catch(Exception e) {
+				System.out.println("Error al conectar con base de datos");
+				System.out.println(e);
+				return null;
+			}
+		}else return null;
 	}
 	public boolean addMovie(Pelicula pelicula) {
 		if(startConnection()) {
