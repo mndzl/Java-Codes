@@ -2,18 +2,39 @@ package Controlador;
 import Modelo.*;
 import java.util.ArrayList;
 import java.sql.*;
-import javax.sql.*;
+import Vista.*;
 
 public class Main {
-
+	static ArrayList<Pelicula>peliculasEnCartelera;
+	static ConnectionProtocol database = new ConnectionProtocol("jdbc:mysql://localhost:3306/Cines","root","");
+	static PantallaPrincipal principal = new PantallaPrincipal();
+	static AdminPrincipal adminPrincipal= new AdminPrincipal();
+	static ClientePrincipal clientePrincipal = new ClientePrincipal();
+	
+	
 	public static void main(String[] args) {
-		ConnectionProtocol conexion = new ConnectionProtocol("jdbc:mysql://localhost:3306/Cines","root","");
-		
+		// Updating Movies
+			updateDatabase();
+		// etc
+			
+			
+			
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private static void updateDatabase() {
 		ArrayList<String>peliculas = new ArrayList<>();
 		ArrayList<String>clasificaciones = new ArrayList<>();
 		ArrayList<String>duraciones = new ArrayList<>(); 
 		
-		ResultSet tabla = conexion.getTable();
+		ResultSet tabla = database.getTable();
 		
 		try {
 			while(tabla.next()) {
@@ -28,14 +49,11 @@ public class Main {
 			System.out.println(e);
 		}
 	
-		ArrayList<Pelicula>peliculasEnCartelera = new ArrayList<>();
+		peliculasEnCartelera = new ArrayList<>();
 		
 		for(int i=0; i<peliculas.size(); i++) {
 			peliculasEnCartelera.add( new Pelicula(peliculas.get(i),clasificaciones.get(i),duraciones.get(i)) );
 		}
-		
-		
-		
 		
 	}
 	

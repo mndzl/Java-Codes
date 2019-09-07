@@ -7,24 +7,20 @@ public class ConnectionProtocol {
 	private String username;
 	private String password;
 	private String url;
-	private Statement stat;
-	private ResultSet tabla;
-	private boolean connected;
+	private static Statement stat;
 	
 	public ConnectionProtocol(String url, String username, String password){
 		this.url = url;
 		this.username = username;
 		this.password = password;
-		if(startConnection(url,username,password)) {
+		if(startConnection()) {
 			System.out.println("Conexion con base de datos realizada correctamente.");
-			connected = true;
 		}else System.out.println("No se ha podido establecer una conexion con la base de datos");
-			connected = false;
 	}
 	
-	private boolean startConnection(String url,String username,String password) {
+	private boolean startConnection() {
 		try {
-			this.conn = DriverManager.getConnection(url,username,password);
+			this.conn = DriverManager.getConnection(this.url,this.username,this.password);
 			stat = conn.createStatement();
 			return true;
 		}catch (Exception e){
@@ -42,5 +38,33 @@ public class ConnectionProtocol {
 			return null;
 		}
 	}
+	public boolean addMovie(Pelicula pelicula) {
+		if(startConnection()) {
+			try {
+				stat.executeUpdate("INSERT INTO `PELICULAS` (`NOMBRE`, `CLASIFICACION`, `DURACION`) VALUES ('" + pelicula.getNombre() + "', '" + pelicula.getClasificacion() + "', '" + pelicula.getDuracion() + "')");
+				System.out.println("La pelicula \'" + pelicula.getNombre() + "\' ha sido añadida a la cartelera.");
+				return true;
+			}catch(Exception e) {
+				System.out.println("La pelicula ya existe, no se han realizado cambios.");
+				return false;
+			}
+		}else {
+			System.out.println("Base de datos no conectada, accion no realizada.");
+			return false;
+		}
+	}
+		
+		
+	public boolean deleteMovie(String nombre) {
+		try {
+			stat.executeUpdate("DELETE FROM PELICULAS WHERE NOMBRE=\'"+ nombre + "\'");
+			System.out.println("Se ha eliminado la película \'" + nombre + "\' de la cartelera.");
+			return true;
+		}catch(Exception e) {
+			System.out.println("No se ha encontrado la película " + nombre + ": " + e);
+			return false;
+		}
+	}
+	
 	
 }

@@ -1,20 +1,17 @@
 package Modelo;
-import java.util.ArrayList;
 
 public class Pelicula {
 	private String nombre;
 	private String clasificacion;
 	private String duracion;
 	private double preciothis;
-	private static ArrayList<String>peliculas;
 	public static double precio = 200;
 	
 	public Pelicula(String nombre, String clasificacion, String duracion) {
 		this.nombre = nombre;
 		this.clasificacion = clasificacion;
 		this.duracion = duracion;
-		preciothis = precio;		
-		System.out.println("Se ha añadido la pelicula \"" + nombre + "\" a la cartelera.");
+		preciothis = precio;
 	}
 	
 	public String getNombre() {
