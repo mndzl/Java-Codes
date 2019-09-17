@@ -18,7 +18,7 @@ public class Ejercicio2 {
             System.out.println("Ingrese el indice: "); n = scanner.nextInt();
             System.out.println(caracterEn(c,n));
         }catch(NotInRangeException r){
-            System.out.println("El elemento " + n + " de la cadena no existe.");
+            r.printStackTrace();
         }catch(Exception e){
             System.out.println("Hubo un error desconocido.");
             e.printStackTrace();
