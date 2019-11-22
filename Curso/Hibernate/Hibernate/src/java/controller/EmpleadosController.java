@@ -38,12 +38,16 @@ public class EmpleadosController {
     
     @RequestMapping(value="nuevoEmpleado.htm", method=RequestMethod.GET)
        public ModelAndView agregar(){
-           mv.addObject
-           
+           mv.addObject(new Empleado());
+           mv.setViewName("nuevoEmpleado");
         
         return mv;
     }
     
+    @RequestMapping(value="nuevaNoticia.htm",method=RequestMethod.POST)
+    public ModelAndView agregar(Empleado n){
+        
+    }
     
     
 }
