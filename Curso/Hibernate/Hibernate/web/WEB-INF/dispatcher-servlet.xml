@@ -23,6 +23,7 @@
                 <prop key="index.htm">indexController</prop>
                 <prop key="empleados.htm">EmpleadosController</prop>
                 <prop key="localidades.htm">LocalidadesController</prop>
+                <prop key="nuevoEmpleado.htm">EmpleadosController</prop>
             </props>
         </property>
     </bean>
