@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 21/11/2019 19:32:45 by Hibernate Tools 4.3.1
+// Generated 22/11/2019 18:35:58 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -14,22 +14,22 @@ public class Empleados  implements java.io.Serializable {
      private String nombre;
      private String apellido;
      private Byte edad;
-     private float salario;
+     private Float salario;
      private Date fechaIngreso;
-     private int idDepartamento;
+     private Integer idDepartamento;
 
     public Empleados() {
     }
 
 	
-    public Empleados(String nombre, String apellido, float salario, Date fechaIngreso, int idDepartamento) {
+    public Empleados(String nombre, String apellido, Float salario, Date fechaIngreso, Integer idDepartamento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.salario = salario;
         this.fechaIngreso = fechaIngreso;
         this.idDepartamento = idDepartamento;
     }
-    public Empleados(String nombre, String apellido, Byte edad, float salario, Date fechaIngreso, int idDepartamento) {
+    public Empleados(String nombre, String apellido, Byte edad, Float salario, Date fechaIngreso, Integer idDepartamento) {
        this.nombre = nombre;
        this.apellido = apellido;
        this.edad = edad;
@@ -66,11 +66,11 @@ public class Empleados  implements java.io.Serializable {
     public void setEdad(Byte edad) {
         this.edad = edad;
     }
-    public float getSalario() {
+    public Float getSalario() {
         return this.salario;
     }
     
-    public void setSalario(float salario) {
+    public void setSalario(Float salario) {
         this.salario = salario;
     }
     public Date getFechaIngreso() {
@@ -80,11 +80,11 @@ public class Empleados  implements java.io.Serializable {
     public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
-    public int getIdDepartamento() {
+    public Integer getIdDepartamento() {
         return this.idDepartamento;
     }
     
-    public void setIdDepartamento(int idDepartamento) {
+    public void setIdDepartamento(Integer idDepartamento) {
         this.idDepartamento = idDepartamento;
     }
 

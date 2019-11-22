@@ -10,5 +10,9 @@
     <mapping resource="model/pojo/Departamentos.hbm.xml"/>
     <mapping resource="model/pojo/GradosTrabajo.hbm.xml"/>
     <mapping resource="model/pojo/Empleados.hbm.xml"/>
+    <mapping resource="model/dao/Localidades.hbm.xml"/>
+    <mapping resource="model/dao/Departamentos.hbm.xml"/>
+    <mapping resource="model/dao/GradosTrabajo.hbm.xml"/>
+    <mapping resource="model/dao/Empleados.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
