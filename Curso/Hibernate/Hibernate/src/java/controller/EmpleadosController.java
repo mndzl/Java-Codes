@@ -46,7 +46,16 @@ public class EmpleadosController {
     
     @RequestMapping(value="nuevaNoticia.htm",method=RequestMethod.POST)
     public ModelAndView agregar(Empleado n){
+        ModelAndView mv = new ModelAndView("nuevaNoticia");
         
+        try{
+            EmpleadosDAO.agregar(n);
+            return mv;
+        }catch(Exception e){
+            e.printStackTrace();   
+        }
+        
+        return new ModelAndView("redirect:/empleados.htm");
     }
     
     
