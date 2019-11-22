@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 import model.dao.empleadosDAO;
 import model.pojo.Empleados;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
@@ -21,16 +22,24 @@ public class EmpleadosController {
     ModelAndView mv = new ModelAndView();
     
     
-    @RequestMapping(value="empleados.htm");
+    @RequestMapping(value="empleados.htm")
     public ModelAndView listar(){
         try{
             List<Empleados>empleados = empleadosDAO.listar();
-            mv.setViewName("Empleados");
+            mv.setViewName("empleados");
             mv.addObject("Empleados",empleados);
         }catch(Exception e){
             System.out.println("Hubo un error en el controlador");
             e.printStackTrace();
         }
+        
+        return mv;
+    }
+    
+    @RequestMapping(value="nuevoEmpleado.htm", method=RequestMethod.GET)
+       public ModelAndView agregar(){
+           mv.addObject
+           
         
         return mv;
     }

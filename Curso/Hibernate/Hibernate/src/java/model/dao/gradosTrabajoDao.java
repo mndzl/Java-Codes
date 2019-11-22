@@ -5,35 +5,33 @@
  */
 package model.dao;
 
-
 import java.util.List;
+import model.pojo.GradosTrabajo;
 import model.util.HibernateUtil;
-import model.pojo.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+
 /**
  *
  * @author mendez
  */
-public class empleadosDAO {
-    public static List<Empleados> listar(){
-        List<Empleados>empleados = null;
+public class gradosTrabajoDao {
+        public static List<GradosTrabajo> listar(){
+        List<GradosTrabajo>grados = null;
         
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
             
-            String hql = "from Empleados";
+            String hql = "from GradosTrabajo";
             Query query = session.createQuery(hql);
-            empleados = query.list();
+            grados = query.list();
             session.close();
          
         }catch(HibernateException e){
             System.out.println("Error al conectar con Hibernate");
             e.printStackTrace();
         }
-        return empleados;
+        return grados;
     }
-
-    
 }

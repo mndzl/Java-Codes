@@ -10,8 +10,9 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
-
-    <!--
+    <bean class="controller.EmpleadosController" id="EmpleadosController"/>
+    <bean class="controller.LocalidadesController" id="LocalidadesController"/>
+      <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must
     define an explicit mapping for it.
@@ -20,6 +21,8 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">indexController</prop>
+                <prop key="empleados.htm">EmpleadosController</prop>
+                <prop key="localidades.htm">LocalidadesController</prop>
             </props>
         </property>
     </bean>

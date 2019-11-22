@@ -8,10 +8,10 @@
             <column name="Grado" length="1" />
             <generator class="assigned"></generator>
         </id>
-        <property name="sueldoMinimo" type="java.lang.float">
+        <property name="sueldoMinimo" type="float">
             <column name="SueldoMinimo" precision="12" scale="0" not-null="true" />
         </property>
-        <property name="sueldoMaximo" type="java.lang.float">
+        <property name="sueldoMaximo" type="float">
             <column name="SueldoMaximo" precision="12" scale="0" not-null="true" />
         </property>
     </class>
