@@ -12,6 +12,7 @@
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
     <bean class="controller.EmpleadosController" id="EmpleadosController"/>
     <bean class="controller.LocalidadesController" id="LocalidadesController"/>
+    <bean class="controller.DepartamentosController" id="DepartamentosController"/>
       <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must
@@ -22,7 +23,9 @@
             <props>
                 <prop key="index.htm">indexController</prop>
                 <prop key="empleados.htm">EmpleadosController</prop>
+                <prop key="nuevoEmpleado.htm">EmpleadosController</prop>
                 <prop key="localidades.htm">LocalidadesController</prop>
+                <prop key="departamentos.htm">DepartamentosController</prop>
             </props>
         </property>
     </bean>

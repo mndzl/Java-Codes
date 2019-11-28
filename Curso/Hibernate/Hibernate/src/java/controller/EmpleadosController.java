@@ -6,11 +6,14 @@
 package controller;
 
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 import model.dao.empleadosDAO;
 import model.pojo.Empleados;
+import org.hibernate.HibernateException;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class EmpleadosController {
     ModelAndView mv = new ModelAndView();
+    int id;
     
     
     @RequestMapping(value="empleados.htm")
@@ -28,22 +32,46 @@ public class EmpleadosController {
             List<Empleados>empleados = empleadosDAO.listar();
             mv.setViewName("empleados");
             mv.addObject("Empleados",empleados);
+            return mv;
         }catch(Exception e){
             System.out.println("Hubo un error en el controlador");
             e.printStackTrace();
         }
         
-        return mv;
+        return null;
     }
     
     @RequestMapping(value="nuevoEmpleado.htm", method=RequestMethod.GET)
        public ModelAndView agregar(){
-           mv.addObject
+           mv.addObject(new Empleados());
+           mv.setViewName("nuevoEmpleado");
            
-        
         return mv;
     }
     
+    @RequestMapping(value="nuevoEmpleado.htm",method=RequestMethod.POST)
+    public ModelAndView agregar(Empleados e){
+        ModelAndView mv = new ModelAndView("nuevoEmpleado");
+        
+        try{
+            empleadosDAO.agregar(e);
+        }catch(HibernateException h){
+            System.out.println("Fallo en el controller");
+            h.printStackTrace();
+        }
+        
+        return new ModelAndView("redirect:/empleados.htm");
+        
+    }
     
+      @RequestMapping(value="editarEmpleado.htm", method=RequestMethod.GET)
+       public ModelAndView editar(HttpServletRequest req){
+           id = Integer.parseInt(req.getParameter("id"));
+           List datos = empleadosDAO.editar(id);
+           mv.addObject("datos",datos);
+           mv.setViewName("editarEmpleado");
+           
+        return mv;
+    }
     
 }

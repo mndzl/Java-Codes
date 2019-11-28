@@ -27,13 +27,15 @@ public class LocalidadesController {
     public ModelAndView listar(){
         try{
             List<Localidades>localidades = localidadesDAO.listar();
-            mv.setViewName("Localidades");
+            mv.setViewName("localidades");
             mv.addObject("Localidades",localidades);
+            
+            return mv;
         }catch(Exception e){
             System.out.println("Hubo un error en el controlador");
             e.printStackTrace();
         }
         
-        return mv;
+        return null;
     }
 }

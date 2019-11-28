@@ -23,10 +23,19 @@
                 <div class="card-body">
                     <form method="POST">
                         <label>Nombre</label>
-                        <input type="text" name="titulo" class="form-control">
+                        <input type="text" name="nombre" class="form-control">
                         
                         <label>Apellido</label>
-                        <input type="text" name="descripcion" class="form-control">
+                        <input type="text" name="apellido" class="form-control">
+                        
+                        <label>Salario</label>
+                        <input type="text" name="salario" class="form-control">
+                        
+                        <label>Edad</label>
+                        <input type="text" name="edad" class="form-control">
+                        
+                        <label>Departamento</label>
+                        <input type="text" name="idDepartamento" class="form-control">
                         
                         <input type="submit" value="Agregar" class="btn btn-success">
                         

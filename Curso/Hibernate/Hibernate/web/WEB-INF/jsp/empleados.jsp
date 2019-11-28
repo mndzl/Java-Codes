@@ -39,6 +39,10 @@
                                 <td><c:out value="${empleado.getNombre()}"></c:out> </td>
                                 <td><c:out value="${empleado.getApellido()}"></c:out></td>
                             </tr>
+                            <td>
+                                <a href="editarEmpleado.htm?id=${empleado.getId()}">Editar</a>    
+                            </td>
+                           
 
                         </c:forEach>
                     </tbody>
@@ -48,7 +52,6 @@
             </div>
         </div>
         <a href="nuevoEmpleado.htm">Agregar empleado</a>
-                        
       
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>

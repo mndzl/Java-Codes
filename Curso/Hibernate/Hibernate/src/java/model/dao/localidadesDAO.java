@@ -27,7 +27,7 @@ public class localidadesDAO {
             Query query = session.createQuery(hql);
             localidades = query.list();
             session.close();
-         
+      
         }catch(HibernateException e){
             System.out.println("Error al conectar con Hibernate");
             e.printStackTrace();
