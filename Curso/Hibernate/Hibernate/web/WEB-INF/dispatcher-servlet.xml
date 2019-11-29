@@ -25,11 +25,10 @@
                 <prop key="empleados.htm">EmpleadosController</prop>
                 <prop key="nuevoEmpleado.htm">EmpleadosController</prop>
                 <prop key="localidades.htm">LocalidadesController</prop>
-<<<<<<< HEAD
                 <prop key="departamentos.htm">DepartamentosController</prop>
-=======
                 <prop key="nuevoEmpleado.htm">EmpleadosController</prop>
->>>>>>> ac1ea9c20b4e9dd750813cf7b0a6c713ffdef15f
+                <prop key="editarEmpleado.htm">EmpleadosController</prop>
+                <prop key="eliminar.htm">EmpleadosController</prop>
             </props>
         </property>
     </bean>

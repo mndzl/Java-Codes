@@ -38,10 +38,12 @@
                             <tr>
                                 <td><c:out value="${empleado.getNombre()}"></c:out> </td>
                                 <td><c:out value="${empleado.getApellido()}"></c:out></td>
+                                <td>
+                                    <a class="btn btn-warning" href="editarEmpleado.htm?id=${empleado.getId()}">Editar</a>
+                                    <a class="btn btn-danger" href="eliminar.htm?id=${empleado.getId()}">Eliminar</a>
+                                </td>
                             </tr>
-                            <td>
-                                <a href="editarEmpleado.htm?id=${empleado.getId()}">Editar</a>    
-                            </td>
+
                            
 
                         </c:forEach>

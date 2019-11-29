@@ -37,7 +37,7 @@ public class empleadosDAO {
     }
 
     
-       public static void agregar(Empleados e){
+    public static void agregar(Empleados e){
            try{
                Session session = HibernateUtil.getSessionFactory().openSession();
                Transaction tx = session.beginTransaction();
@@ -46,7 +46,7 @@ public class empleadosDAO {
            }catch(Exception ex){
                ex.printStackTrace();
            }
-       }
+    }
 
     public static List editar(int id) {
        List datos = null;
@@ -62,6 +62,30 @@ public class empleadosDAO {
        }
        
        return datos;
+    }
+
+    public static void editar(Empleados e) {
+          try{
+               Session session = HibernateUtil.getSessionFactory().openSession();
+               Transaction tx = session.beginTransaction();
+               session.update(e);
+               tx.commit();
+           }catch(Exception ex){
+               System.out.println("Fallo editar DAO");
+               ex.printStackTrace();
+           }
+    }
+    
+    public static void eliminar(int id){
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            String hql = "delete Empleados where ID="+id;
+            Query query = session.createQuery(hql);
+            query.executeUpdate();
+            session.close();
+        }catch(HibernateException e){
+            e.printStackTrace();
+        }
     }
     
 }

@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class EmpleadosController {
-    ModelAndView mv = new ModelAndView();
-    int id;
+    private ModelAndView mv = new ModelAndView();
+    private int id;
     
     
     @RequestMapping(value="empleados.htm")
@@ -43,7 +43,7 @@ public class EmpleadosController {
     
     @RequestMapping(value="nuevoEmpleado.htm", method=RequestMethod.GET)
        public ModelAndView agregar(){
-<<<<<<< HEAD
+
            mv.addObject(new Empleados());
            mv.setViewName("nuevoEmpleado");
            
@@ -62,37 +62,38 @@ public class EmpleadosController {
         }
         
         return new ModelAndView("redirect:/empleados.htm");
-        
-=======
-           mv.addObject(new Empleado());
-           mv.setViewName("nuevoEmpleado");
-        
-        return mv;
+
     }
     
-    @RequestMapping(value="nuevaNoticia.htm",method=RequestMethod.POST)
-    public ModelAndView agregar(Empleado n){
-        ModelAndView mv = new ModelAndView("nuevaNoticia");
-        
-        try{
-            EmpleadosDAO.agregar(n);
-            return mv;
-        }catch(Exception e){
-            e.printStackTrace();   
-        }
-        
-        return new ModelAndView("redirect:/empleados.htm");
->>>>>>> ac1ea9c20b4e9dd750813cf7b0a6c713ffdef15f
-    }
-    
-      @RequestMapping(value="editarEmpleado.htm", method=RequestMethod.GET)
-       public ModelAndView editar(HttpServletRequest req){
+    @RequestMapping(value="editarEmpleado.htm", method=RequestMethod.GET)
+      public ModelAndView editar(HttpServletRequest req){
            id = Integer.parseInt(req.getParameter("id"));
            List datos = empleadosDAO.editar(id);
            mv.addObject("datos",datos);
            mv.setViewName("editarEmpleado");
            
         return mv;
+    }
+      
+    @RequestMapping(value="editarEmpleado.htm",method=RequestMethod.POST)
+    public ModelAndView editar(Empleados e){
+        ModelAndView mv = new ModelAndView("editarEmpleado");
+        
+        try{
+            empleadosDAO.editar(e);
+        }catch(HibernateException h){
+            System.out.println("Fallo en el controller");
+            h.printStackTrace();
+        }
+        
+        return new ModelAndView("redirect:/empleados.htm");
+    }
+    
+      @RequestMapping("eliminar.htm")
+      public ModelAndView eliminar(HttpServletRequest req){
+           id = Integer.parseInt(req.getParameter("id"));
+           empleadosDAO.eliminar(id);
+           return new ModelAndView("redirect:/empleados.htm");
     }
     
 }
