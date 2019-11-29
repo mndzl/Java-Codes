@@ -43,6 +43,7 @@ public class EmpleadosController {
     
     @RequestMapping(value="nuevoEmpleado.htm", method=RequestMethod.GET)
        public ModelAndView agregar(){
+<<<<<<< HEAD
            mv.addObject(new Empleados());
            mv.setViewName("nuevoEmpleado");
            
@@ -62,6 +63,26 @@ public class EmpleadosController {
         
         return new ModelAndView("redirect:/empleados.htm");
         
+=======
+           mv.addObject(new Empleado());
+           mv.setViewName("nuevoEmpleado");
+        
+        return mv;
+    }
+    
+    @RequestMapping(value="nuevaNoticia.htm",method=RequestMethod.POST)
+    public ModelAndView agregar(Empleado n){
+        ModelAndView mv = new ModelAndView("nuevaNoticia");
+        
+        try{
+            EmpleadosDAO.agregar(n);
+            return mv;
+        }catch(Exception e){
+            e.printStackTrace();   
+        }
+        
+        return new ModelAndView("redirect:/empleados.htm");
+>>>>>>> ac1ea9c20b4e9dd750813cf7b0a6c713ffdef15f
     }
     
       @RequestMapping(value="editarEmpleado.htm", method=RequestMethod.GET)
