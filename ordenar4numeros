@@ -1,0 +1,60 @@
+Algoritmo para mostrar 4 valores ordenados decrecientemente, los cuales fueron ingresados por consola.
+
+EMPIEZA_ALGORITMO
+    ENTERO n1
+    IMPRIMIR('Ingrese el primer numero: ')
+    LEER(n1)
+
+    ENTERO n2
+    IMPRIMIR('Ingrese el segundo numero: ')
+    LEER(n2)
+
+    ENTERO n3
+    IMPRIMIR('Ingrese el tercer numero: ')
+    LEER(n3)
+
+    ENTERO n4
+    IMPRIMIR('Ingrese el cuarto numero: ')
+    LEER(n4)
+
+    ENTERO aux
+
+    /* Se compara n1 con los siguientes numeros (n2,n3,n4) y se busca que n1 sea el mayor de todos */
+    SI (n1<n2)
+        aux = n2
+        n2 = n1
+        n1 = aux
+    SI (n1<n3)
+        aux = n3
+        n3 = n2
+        n2 = aux
+    SI (n1<n4)
+        aux = n4
+        n4 = n3
+        n3 = aux
+
+    /* n1 es el mayor, ahora se repite el proceso con n2 y sus siguientes (n3,n4) */
+    SI (n2<n3)
+        aux = n3
+        n3 = n2
+        n2 = aux
+    SI (n2<n4)
+        aux = n4
+        n4 = n3
+        n3 = aux    
+
+    /* n2 es el segundo mayor, ahora se repite el proceso con n3 y sus siguientes (n4) */
+    SI (n3<n4)
+        aux = n4
+        n4 = n3
+        n3 = aux
+
+    /* n3 y n4 se ordenan al ser permutados */
+
+
+    ESCRIBIR('Numeros ordenados: ')
+    ESCRIBIR n1, n2, n3, n4  
+
+
+
+FIN_ALGORITMO
